@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize";
 // import from env
 
-export const sequelizeInstance = new Sequelize('test2', 'root', '', {
-    host: 'localhost',
+export const sequelizeInstance = new Sequelize('b7i6rj0ervgyebzboxpk', 'uzwauddfyqd6e4b8', 'UyNriJISspfaYI6BFSpn', {
+    host: 'b7i6rj0ervgyebzboxpk-mysql.services.clever-cloud.com',
     dialect: 'mysql'
 });
 
@@ -18,7 +18,7 @@ const testConnection = async () => {
 // sync
 export const dbConnection = async () => {
     try {
-        await sequelizeInstance.sync({ alter: false, force: false});
+        await sequelizeInstance.sync({ alter: false, force: false });
         console.log('Connection has been established successfully.');
     } catch (error) {
         console.log('Unable to establish a connection.', error);

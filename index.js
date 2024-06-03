@@ -5,15 +5,13 @@ import commentRouter from "./src/Modules/Comments/comment.routes.js";
 import testConnection from './DB/connection.js';
 import { dbConnection } from "./DB/connection.js";
 import User from './DB/Models/user.model.js';
-// const { User } = require("../DB/Models/user.model.js");
-
 import Post from './DB/Models/post.model.js';
 import Comment from './DB/Models/comment.model.js';
 
 
 
 const app = express()
-const port = 3000
+const port = 8080
 app.use(express.json())
 app.use('/user', userRouter)
 app.use('/post', postRouter)

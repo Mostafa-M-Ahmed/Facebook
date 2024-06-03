@@ -63,4 +63,3 @@ import bcrypt from "bcrypt";
     };
 
     export default User;
-    // return User;

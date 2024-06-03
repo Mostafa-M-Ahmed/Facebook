@@ -35,6 +35,7 @@ export const registerUser = async (req, res, next) => {
 export const loginUser = async (req, res, next) => {
     const { email, pass } = req.body
 
+
     // find email
     const user = await User.findOne({
         where: {
@@ -70,14 +71,17 @@ export const loginUser = async (req, res, next) => {
 
 
 // ================================ logout ==================================
-export const logoutUser = async (req, res, next) => {
-    const { email } = req.body
 
-    const user = await User.findOne({
-        where: {
-            email
-        }
-    })
+// ==================================================================================================================
+// ==================================================================================================================
+// ============================= Front end developer should  handle the logout ======================================
+// ======================== Just remove the TOKEN from the browser's local storage ==================================
+// ==================================================================================================================
+// ==================================================================================================================
+export const logoutUser = async (req, res, next) => {
+    const userId = req.user.id;
+
+    const user = await User.findByPk(userId)
     if (!user) {
         return res.json({ message: 'This email does NOT exist' })
     }
@@ -85,20 +89,11 @@ export const logoutUser = async (req, res, next) => {
     if (user.loginFlag == false) {
         return res.json({ message: 'user is already logged out' })
     }
-    else {
-        const data = await User.update({
-            loginFlag: false
-        },
-            {
-                where: {
-                    email
-                }
-            })
-        if (!data[0]) {
-            return res.json({ message: 'an error has occurred' })
-        }
-        res.json({ message: 'User logged out successfully' })
-    }
+
+    user.loginFlag = false;
+    await user.save();
+
+    res.json({ message: 'User logged out successfully' })
 }
 
 
@@ -108,6 +103,7 @@ export const getAuthorPosts = async (req, res, next) => {
         const userId = req.query.id;
         const user = await User.findOne({
             where: { id: userId },
+            attributes: ['id', 'username', 'email', 'createdAt', 'updatedAt'],
             include: [
                 {
                     model: Post,
@@ -152,15 +148,10 @@ export const getUserPostAllComments = async (req, res, next) => {
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-        // user.post = post
-        const combined = {
-            user: user,
-            post: post
+        const data = {
+            user: { ...user.toJSON(), post }
         }
-        const lmao = {
-            user: {...user.toJSON(), post}
-        }
-        res.json(lmao);
+        res.json(data);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

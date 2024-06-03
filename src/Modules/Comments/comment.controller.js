@@ -32,7 +32,7 @@ export const addComment = async (req, res, next) => {
 
 // ============================ Get all comments ===============================
 export const listComments = async (req, res, next) => {
-    const comments = await Comment.findAll()           // get all comments (no restrictions)
+    const comments = await Comment.findAll()
     res.json(comments)
 }
 // ============================ Get specific comment ===============================

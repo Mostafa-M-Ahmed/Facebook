@@ -10,6 +10,9 @@
     "start:dev": "nodemon index.js",
     "start:watch": "node --watch index.js"
   },
+  "engines": {
+    "node": "20.11.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

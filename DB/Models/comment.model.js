@@ -1,8 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelizeInstance } from "../connection.js";
 import User from "./user.model.js";
-// const { User } = require("../../../DB/Models/user.model.js");
-
 import Post from "./post.model.js";
 
 

@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "app_id": "app_1056653b-5dfb-4f61-96c0-9d543d0d592a",
+      "org_id": "user_ec8e2e11-efe7-447d-8381-9e5fb85dc533",
+      "deploy_url": "https://push-n3-par-clevercloud-customers.services.clever-cloud.com/app_1056653b-5dfb-4f61-96c0-9d543d0d592a.git",
+      "git_ssh_url": "git+ssh://git@push-n3-par-clevercloud-customers.services.clever-cloud.com/app_1056653b-5dfb-4f61-96c0-9d543d0d592a.git",
+      "name": "facebook application",
+      "alias": "facebook-application"
+    }
+  ]
+}

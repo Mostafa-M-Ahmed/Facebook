@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelizeInstance } from "../connection.js";
 import User from "./user.model.js";
-// const User  = require("../user.model.js");
 
 const Post = sequelizeInstance.define('Post',
     {
